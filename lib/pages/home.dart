@@ -13,26 +13,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
+  // int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _counter++;
+  //   });
+  // }
 
-  void getApi() async {
-    var url = Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
-    var response = await http.get(url);
+  // void getApi() async {
+  //   var url = Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
+  //   var response = await http.get(url);
 
-    if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['totalItems'];
-      print('Number of books about http: $itemCount.');
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
+  //     var itemCount = jsonResponse['totalItems'];
+  //     print('Number of books about http: $itemCount.');
+  //   } else {
+  //     print('Request failed with status: ${response.statusCode}.');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
         ),
         body: SingleChildScrollView(
           child: Container(
-              padding: EdgeInsets.only(top: 80),
+              padding: EdgeInsets.only(top: 70),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -53,19 +53,26 @@ class _HomeState extends State<Home> {
                       'assets/images/logo.png',
                       height: 100,
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
+                    Text('Seja consciente!', style: TextStyle(color: Colors.green[800], fontSize: 16)),
+                    const SizedBox(height: 30),
                     TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.green[900], fixedSize: Size(300, 30)),
-                        onPressed: () => {Navigator.pushNamed(context, '/cadastro')},
-                        child: Text("Faça sua Denúncia", style: TextStyle(color: Colors.white))),
-                    const SizedBox(height: 16),
+                        onPressed: () => {Navigator.pushNamed(context, '/denuncia')},
+                        child: Text("Nova Denúncia", style: TextStyle(color: Colors.white))),
+                    const SizedBox(height: 10),
                     TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.green[900], fixedSize: Size(300, 30)),
-                        onPressed: () => {Navigator.pushNamed(context, '/login')},
+                        onPressed: () => {Navigator.pushNamed(context, '/denuncias_realizadas')},
                         child: Text("Veja suas Denúncias", style: TextStyle(color: Colors.white))),
-                    // Text('You have pushed the button this many times:'),
+                    const SizedBox(height: 10),
+                    TextButton(
+                        style: TextButton.styleFrom(backgroundColor: Colors.green[600], fixedSize: Size(300, 30)),
+                        onPressed: () => {Navigator.pushNamed(context, '/meio_ambiente')},
+                        child: Text("Saiba mais", style: TextStyle(color: Colors.white))),
+
                     Container(
-                      margin: EdgeInsets.only(top: 50),
+                      margin: EdgeInsets.only(top: 40),
                       padding: EdgeInsets.all(20),
                       height: 200,
                       width: 300,

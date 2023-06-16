@@ -3,37 +3,23 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
-  const Login({
-    super.key,
-  });
-  final String title = "Login";
-
-  // const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  int _counter = 0;
+  final TextEditingController emailField = TextEditingController();
+  final TextEditingController senhaField = TextEditingController();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void getApi() async {
-    var url = Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
-    var response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['totalItems'];
-      print('Number of books about http: $itemCount.');
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
+  void login() {
+    if (emailField.text == "admin" && senhaField.text == "admin") {
+      emailField.clear();
+      senhaField.clear();
+      Navigator.popAndPushNamed(context, '/home');
     }
+    Navigator.popAndPushNamed(context, '/home');
   }
 
   @override
@@ -54,34 +40,39 @@ class _LoginState extends State<Login> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   const SizedBox(height: 12),
-                  TextFormField(
+                  TextField(
+                    controller: emailField,
                     decoration: const InputDecoration(
                       filled: true,
                       labelText: 'E-mail',
+                      hintText: 'exemplo@mail.com',
+                      errorText: null,
                       border: UnderlineInputBorder(),
                     ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
+                  TextField(
+                    controller: senhaField,
                     obscureText: true,
                     decoration: const InputDecoration(
                       filled: true,
                       labelText: 'Senha',
+                      errorText: null,
                       border: UnderlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () => {Navigator.pushNamed(context, '/home')},
+                    onPressed: login,
                     child: const Text('Entrar'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => {},
                     child: const Text('Denúncia Anônima'),
                   ),
 
                   // Icon(Icons.star, color: Colors.green[500]),
-                  // Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
                 ],
               ),
             )));

@@ -8,9 +8,11 @@ import 'package:evite_queimadas/pages/denuncias_realizadas.dart';
 import 'package:evite_queimadas/pages/detalhes_denuncia.dart';
 import 'package:evite_queimadas/pages/meio_ambiente.dart';
 import 'package:evite_queimadas/pages/denuncia.dart';
+import 'package:evite_queimadas/pages/my_camera.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
           '/denuncias_realizadas': (BuildContext context) => DenunciasRealizadas(),
           '/detalhes_denuncia': (BuildContext context) => DetalhesDenuncia(),
           '/meio_ambiente': (BuildContext context) => MeioAmbiente(),
+          '/my_camera': (BuildContext context) => MyCamera(),
         });
   }
 }

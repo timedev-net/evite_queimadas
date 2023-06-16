@@ -40,6 +40,7 @@ class _DetalhesDenunciaState extends State<DetalhesDenuncia> {
         backgroundColor: Colors.green[300],
         appBar: AppBar(
           backgroundColor: Colors.green[800],
+          centerTitle: true,
           title: Text('Detalhes da Denúncia', style: TextStyle(color: Colors.white)),
         ),
         body: SingleChildScrollView(
