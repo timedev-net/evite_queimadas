@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AddItem extends StatefulWidget {
-  const AddItem({super.key, required this.title});
-  final String title;
+  const AddItem({super.key});
+  final String title = 'teste';
 
   // const AddItem({Key? key}) : super(key: key);
 

@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 16),
                     TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.green[900], fixedSize: Size(300, 30)),
-                        onPressed: () => {Navigator.pushNamed(context, '/cadastro')},
+                        onPressed: () => {Navigator.pushNamed(context, '/login')},
                         child: Text("Veja suas Denúncias", style: TextStyle(color: Colors.white))),
                     // Text('You have pushed the button this many times:'),
                     Container(

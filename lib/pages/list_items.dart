@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class AddItem extends StatefulWidget {
-  const AddItem({super.key, required this.title});
-  final String title;
+class ListItems extends StatefulWidget {
+  const ListItems({super.key});
+  final String title = 'List items';
 
-  // const AddItem({Key? key}) : super(key: key);
+  // const ListItems({Key? key}) : super(key: key);
 
   @override
-  _AddItemState createState() => _AddItemState();
+  _ListItemsState createState() => _ListItemsState();
 }
 
-class _AddItemState extends State<AddItem> {
+class _ListItemsState extends State<ListItems> {
   int _counter = 0;
   List<Map> _array = [];
 

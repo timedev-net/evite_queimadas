@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
-  const Login({super.key, required this.title});
-  final String title;
+  const Login({
+    super.key,
+  });
+  final String title = "Login";
 
   // const Login({Key? key}) : super(key: key);
 
