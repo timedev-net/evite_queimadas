@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => {Navigator.pushNamed(context, '/home')},
                     child: const Text('Entrar'),
                   ),
                   ElevatedButton(

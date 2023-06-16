@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: Splash(),
+        home: Login(),
         routes: <String, WidgetBuilder>{
           '/login': (BuildContext context) => Login(),
           '/cadastro': (BuildContext context) => Cadastro(),
