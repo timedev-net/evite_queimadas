@@ -68,7 +68,7 @@ class _LoginState extends State<Login> {
                     child: const Text('Entrar'),
                   ),
                   ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {Navigator.popAndPushNamed(context, '/cadastro')},
                     child: const Text('Denúncia Anônima'),
                   ),
 

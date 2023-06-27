@@ -1,6 +1,8 @@
+import 'package:evite_queimadas/models/denuncia_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class DenunciasRealizadas extends StatefulWidget {
   // const DenunciasRealizadas({super.key, required this.title});
@@ -13,18 +15,31 @@ class DenunciasRealizadas extends StatefulWidget {
 
 class _DenunciasRealizadasState extends State<DenunciasRealizadas> {
   // int _counter = 0;
-  List<String> denuncias = [
-    '12/08/2022 - 14:27',
-    '13/08/2022 - 14:27',
-    '14/08/2022 - 14:27',
-    '15/08/2022 - 14:27',
-  ];
+  List<dynamic> denuncias = [];
 
-  void addList() {
-    setState(() {
-      denuncias.add('adicionado');
+  final url = Uri.parse("https://leoferrarezi.com/queimada/Complaint/read.php");
+
+  void addList() async {
+    Response res = await get(url);
+    final json = jsonDecode(res.body) as List;
+    print('&&&&&&&&&&&&&&&&&&&&&&&');
+
+    json.forEach((e) {
+      DenunciaModel denuncia = DenunciaModel(
+        int.parse(e['id']),
+        e['date'],
+        e['time'],
+        e['description'],
+        e['img'],
+      );
+      denuncias.add(denuncia);
+      print('eeeeeeeeeeeee');
     });
+
+    print(Image.memory(base64Decode(denuncias[2].img)));
+    setState(() {});
   }
+
   // void _incrementCounter() {
   //   setState(() {
   //     _counter++;
@@ -68,7 +83,7 @@ class _DenunciasRealizadasState extends State<DenunciasRealizadas> {
                     children: <Widget>[
                       // const SizedBox(height: 36),
 
-                      for (String el in denuncias)
+                      for (dynamic el in denuncias)
                         Container(
                           padding: EdgeInsets.all(10),
                           height: 90,
@@ -76,7 +91,10 @@ class _DenunciasRealizadasState extends State<DenunciasRealizadas> {
                           margin: EdgeInsets.only(bottom: 16),
                           decoration: BoxDecoration(color: Colors.white60, borderRadius: BorderRadius.circular(5)),
                           child: Column(
-                            children: [Text(el, style: TextStyle(fontWeight: FontWeight.bold)), Text('Lorem Ipsum has been the industrys standard dummy text ever since the 1500s')],
+                            children: [
+                              Text('${el.date} - ${el.time}', style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text(el.description),
+                            ],
                           ),
                         ),
 
@@ -88,6 +106,7 @@ class _DenunciasRealizadasState extends State<DenunciasRealizadas> {
               ),
             ),
             Image.asset('assets/images/logo.png', height: 70),
+            // Image.memory(base64Decode(denuncias[3].img)),
           ],
         ));
   }
