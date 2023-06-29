@@ -21,43 +21,27 @@ class _DenunciasRealizadasState extends State<DenunciasRealizadas> {
 
   void addList() async {
     Response res = await get(url);
-    final json = jsonDecode(res.body) as List;
-    print('&&&&&&&&&&&&&&&&&&&&&&&');
+    if (res.statusCode == 200) {
+      final json = jsonDecode(res.body) as List;
+      // print('&&&&&&&&&&&&&&&&&&&&&&&');
+      // print(json);
 
-    json.forEach((e) {
-      DenunciaModel denuncia = DenunciaModel(
-        int.parse(e['id']),
-        e['date'],
-        e['time'],
-        e['description'],
-        e['img'],
-      );
-      denuncias.add(denuncia);
-      print('eeeeeeeeeeeee');
-    });
+      json.forEach((e) {
+        DenunciaModel denuncia = DenunciaModel(
+          int.parse(e['id']),
+          e['date'],
+          e['time'],
+          e['description'],
+          e['img'],
+        );
+        denuncias.add(denuncia);
+        // print('eeeeeeeeeeeee');
+      });
 
-    print(Image.memory(base64Decode(denuncias[2].img)));
-    setState(() {});
+      // print(Image.memory(base64Decode(denuncias[2].img)));
+      setState(() {});
+    }
   }
-
-  // void _incrementCounter() {
-  //   setState(() {
-  //     _counter++;
-  //   });
-  // }
-
-  // void getApi() async {
-  //   var url = Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
-  //   var response = await http.get(url);
-
-  //   if (response.statusCode == 200) {
-  //     var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
-  //     var itemCount = jsonResponse['totalItems'];
-  //     print('Number of books about http: $itemCount.');
-  //   } else {
-  //     print('Request failed with status: ${response.statusCode}.');
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

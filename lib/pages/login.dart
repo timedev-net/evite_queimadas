@@ -69,8 +69,12 @@ class _LoginState extends State<Login> {
                   ),
                   ElevatedButton(
                     onPressed: () => {Navigator.popAndPushNamed(context, '/cadastro')},
-                    child: const Text('Denúncia Anônima'),
+                    child: const Text('Criar nova conta'),
                   ),
+                  // ElevatedButton(
+                  //   onPressed: () => {Navigator.popAndPushNamed(context, '/cadastro')},
+                  //   child: const Text('Denúncia Anônima'),
+                  // ),
 
                   // Icon(Icons.star, color: Colors.green[500]),
                 ],

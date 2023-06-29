@@ -21,7 +21,7 @@ class _CadastroState extends State<Cadastro> {
     });
   }
 
-  void getApi() async {
+  void handleCadastrar() async {
     var url = Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
     var response = await http.get(url);
 
@@ -93,7 +93,7 @@ class _CadastroState extends State<Cadastro> {
                     const SizedBox(height: 32),
                     TextButton(
                         style: TextButton.styleFrom(backgroundColor: Colors.green[900], fixedSize: Size(300, 30)),
-                        onPressed: () => {Navigator.pop(context, '/')},
+                        onPressed: () => {Navigator.popAndPushNamed(context, '/home')},
                         child: Text("Cadastrar", style: TextStyle(color: Colors.white))),
                     const SizedBox(height: 20),
                     Image.asset('assets/images/logo.png', height: 70),
